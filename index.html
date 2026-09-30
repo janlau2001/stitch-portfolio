@@ -1,0 +1,1364 @@
+<!doctype html>
+
+<html class="scroll-smooth" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Jan Laurence Olarte - Full Stack Web Developer</title>
+        <!-- Font Awesome Icons -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            rel="stylesheet"
+        />
+        <!-- Tailwind CSS v3 with Plugins -->
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            brand: {
+                                dark: "#080c14",
+                                surface: "#0f172a",
+                                card: "#111927",
+                                inner: "#162235",
+                                border: "#1e293b",
+                                cyan: "#00d2ff",
+                                cyanGlow: "#00e5ff",
+                            },
+                        },
+                        fontFamily: {
+                            sans: [
+                                "Inter",
+                                "system-ui",
+                                "-apple-system",
+                                "BlinkMacSystemFont",
+                                "Segoe UI",
+                                "Roboto",
+                                "sans-serif",
+                            ],
+                            mono: ["JetBrains Mono", "Menlo", "monospace"],
+                        },
+                        boxShadow: {
+                            "neon-cyan": "0 0 18px rgba(0, 210, 255, 0.45)",
+                            "neon-cyan-lg": "0 0 30px rgba(0, 229, 255, 0.55)",
+                            "badge-cyan":
+                                "0 0 15px rgba(0, 210, 255, 0.35), inset 0 0 8px rgba(0, 210, 255, 0.2)",
+                        },
+                    },
+                },
+            };
+        </script>
+        <!-- BEGIN: Custom Global Styles -->
+        <style data-purpose="custom-glow-effects">
+            /* Glowing custom badges matching original screenshots */
+            .glow-pill-header {
+                background-color: #00b4d8;
+                box-shadow:
+                    0 0 20px rgba(0, 180, 216, 0.65),
+                    0 0 35px rgba(0, 180, 216, 0.35);
+            }
+
+            .glow-section-badge {
+                background: rgba(11, 23, 42, 0.85);
+                border: 1.5px solid rgba(0, 210, 255, 0.4);
+                box-shadow:
+                    0 0 20px rgba(0, 210, 255, 0.28),
+                    inset 0 0 12px rgba(0, 210, 255, 0.15);
+            }
+
+            .glow-btn-cyan {
+                background-color: #00a8e8;
+                box-shadow: 0 0 22px rgba(0, 168, 232, 0.65);
+                transition: all 0.25s ease-in-out;
+            }
+
+            .glow-btn-cyan:hover {
+                background-color: #00bbf9;
+                box-shadow: 0 0 30px rgba(0, 187, 249, 0.85);
+                transform: translateY(-2px);
+            }
+
+            /* Subtle backdrop and card styling */
+            .dark-main-card {
+                background-color: #0f1624;
+                border: 1px solid #1a2538;
+                box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.6);
+            }
+
+            .dark-sub-card {
+                background-color: #151e30;
+                border: 1px solid #1f2d45;
+            }
+
+            .tool-tile {
+                background-color: #151e30;
+                border: 1px solid #202b40;
+                transition:
+                    transform 0.2s ease,
+                    border-color 0.2s ease;
+            }
+
+            .tool-tile:hover {
+                transform: translateY(-3px);
+                border-color: rgba(0, 210, 255, 0.5);
+            }
+
+            /* Custom scrollbar */
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #080c14;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #1e293b;
+                border-radius: 4px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #00b4d8;
+            }
+        </style>
+        <!-- END: Custom Global Styles -->
+    </head>
+    <body
+        class="bg-[#080c14] text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-black min-h-screen relative flex flex-col justify-between"
+    >
+        <!-- BEGIN: MainHeader -->
+        <header
+            class="w-full max-w-7xl mx-auto px-6 pt-8 pb-6 flex items-center justify-between relative z-50"
+        >
+            <!-- Brand / Portfolio Logo Pill -->
+            <a
+                class="glow-pill-header text-white font-extrabold text-sm tracking-wider px-6 py-2.5 rounded-full inline-flex items-center uppercase transition transform hover:scale-105"
+                href="#about"
+            >
+                OLARTE PORTFOLIO
+            </a>
+            <!-- Top Navigation Links -->
+            <nav
+                class="hidden md:flex items-center space-x-9 text-xs font-bold tracking-widest text-slate-300 uppercase"
+            >
+                <a
+                    class="hover:text-cyan-400 transition-colors duration-200"
+                    href="#about"
+                    >HOME</a
+                >
+                <a
+                    class="hover:text-cyan-400 transition-colors duration-200"
+                    href="#projects"
+                    >PROJECTS</a
+                >
+                <a
+                    class="hover:text-cyan-400 transition-colors duration-200"
+                    href="#tools"
+                    >TOOLS</a
+                >
+                <a
+                    class="hover:text-cyan-400 transition-colors duration-200"
+                    href="#contact"
+                    >CONTACTS</a
+                >
+                <a
+                  href="./Olarte_CV2026.pdf"
+                  download="Resume.pdf"
+                  class="inline-block bg-cyan-300 text-black font-bold px-4 py-2 rounded-lg hover:bg-cyan-600 hover:text-white transition-colors duration-200"
+                  target="_blank"
+                >RESUME<i class="fa-solid fa-file-arrow-down ms-1"></i>
+                </a>
+            </nav>
+        </header>
+        <!-- END: MainHeader -->
+        <!-- BEGIN: MainContent -->
+        <main class="w-full max-w-7xl mx-auto px-4 sm:px-6 pb-20 space-y-28">
+            <!-- ========================================== -->
+            <!-- SECTION 1: ABOUT ME (HERO)                 -->
+            <!-- ========================================== -->
+            <!-- BEGIN: AboutMeSection -->
+            <section class="pt-6 flex flex-col items-center" id="about">
+                <!-- Section Badge -->
+                <div class="mb-10">
+                    <span
+                        class="glow-section-badge px-10 py-3 rounded-full text-cyan-400 font-extrabold tracking-widest text-base uppercase"
+                    >
+                        ABOUT ME
+                    </span>
+                </div>
+                <!-- Main Profile Card Container -->
+                <div
+                    class="w-full dark-main-card rounded-3xl p-6 sm:p-10 border border-[#1b263b] shadow-2xl"
+                >
+                    <div
+                        class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center"
+                    >
+                        <!-- Left Column: Portrait and Dev Setup Graphic -->
+                        <div class="lg:col-span-5 flex justify-center">
+                            <div
+                                class="relative w-full max-w-[440px] aspect-[4/4.7] rounded-2xl overflow-hidden border border-[#23334d] shadow-xl group"
+                            >
+                                <!-- Illustrated Profile of Jan Laurence Olarte -->
+                                <img
+                                    alt="Jan Laurence Olarte - Web Developer Portrait"
+                                    class="w-full h-full object-cover object-left-top transition-transform duration-500 group-hover:scale-102"
+                                    src="./images/mainprofile.jpg"
+                                />
+                                <!-- Subtle bottom terminal / badge overlay for authentic dev flair -->
+                                <div
+                                    class="absolute bottom-4 right-4 bg-[#0a101d]/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-400 font-mono text-xs font-bold shadow-lg"
+                                >
+                                    &lt;/&gt; DEV
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Column: Biography & Technical Profile -->
+                        <div
+                            class="lg:col-span-7 flex flex-col justify-center space-y-6"
+                        >
+                            <!-- Roles / Main Title -->
+                            <div class="space-y-1">
+                                <p
+                                    class="text-xs sm:text-sm font-extrabold tracking-widest text-cyan-400 uppercase"
+                                >
+                                    FULL STACK WEB DEVELOPER
+                                </p>
+                                <h1
+                                    class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight"
+                                >
+                                    Jan Laurence Olarte
+                                </h1>
+                            </div>
+                            <!-- Bio Card / Paragraphs -->
+                            <div
+                                class="dark-sub-card rounded-2xl p-6 sm:p-7 border border-[#213049] text-slate-300 text-sm sm:text-[15px] leading-relaxed space-y-4"
+                            >
+                                <p>
+                                    I am a Bachelor of Science in Information
+                                    Technology graduate, majoring in Web and
+                                    Mobile Application Development, with a
+                                    strong foundation in both front-end and
+                                    back-end technologies. My academic journey
+                                    also includes two years of Accounting
+                                    studies, which helped me develop analytical
+                                    thinking, attention to detail, and a strong
+                                    understanding of business processes.
+                                </p>
+                                <p class="text-slate-300/90">
+                                    I am a certified IT Specialist in HTML and
+                                    CSS and have successfully completed a Full
+                                    Stack Web Development Internship with Auzbiz
+                                    Consulting, where I gained hands-on
+                                    experience in building and maintaining web
+                                    applications in a professional environment.
+                                </p>
+                            </div>
+                            <!-- Skill Tags Pills -->
+                            <div class="flex flex-wrap gap-2.5 pt-1">
+                                <span
+                                    class="px-3.5 py-1.5 rounded-md bg-[#131c2d] border border-[#22314a] text-slate-200 text-xs font-medium tracking-wide"
+                                >
+                                    HTML &amp; CSS
+                                </span>
+                                <span
+                                    class="px-3.5 py-1.5 rounded-md bg-[#131c2d] border border-[#22314a] text-slate-200 text-xs font-medium tracking-wide"
+                                >
+                                    React &amp; Next.js
+                                </span>
+                                <span
+                                    class="px-3.5 py-1.5 rounded-md bg-[#131c2d] border border-[#22314a] text-slate-200 text-xs font-medium tracking-wide"
+                                >
+                                    Bootstrap
+                                </span>
+                                <span
+                                    class="px-3.5 py-1.5 rounded-md bg-[#131c2d] border border-[#22314a] text-slate-200 text-xs font-medium tracking-wide"
+                                >
+                                    Full-Stack Development
+                                </span>
+                            </div>
+                            <!-- CTA Button -->
+                            <div class="pt-2">
+                                <a
+                                    class="glow-btn-cyan inline-flex items-center space-x-2 text-white font-bold text-sm px-7 py-3 rounded-full uppercase tracking-wider"
+                                    href="#projects"
+                                >
+                                    <span>Explore My Projects</span>
+                                    <span class="text-base leading-none"
+                                        >↓</span
+                                    >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END: AboutMeSection -->
+            <!-- ========================================== -->
+            <!-- SECTION 2: MY PROJECTS                     -->
+            <!-- ========================================== -->
+            <!-- BEGIN: MyProjectsSection -->
+            <section class="pt-4 flex flex-col items-center" id="projects">
+                <!-- Section Badge -->
+                <div class="mb-12">
+                    <span
+                        class="glow-section-badge px-10 py-3 rounded-full text-cyan-400 font-extrabold tracking-widest text-base uppercase"
+                    >
+                        MY PROJECTS
+                    </span>
+                </div>
+                <div class="w-full space-y-10">
+                    <!-- Project 1: LivesFlow -->
+                    <article
+                        class="dark-main-card rounded-3xl p-6 sm:p-10 border border-[#1b263b] shadow-2xl"
+                    >
+                        <div
+                            class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center"
+                        >
+                            <!-- Left: Mockup preview card -->
+                            <div class="lg:col-span-6 order-2 lg:order-1">
+                                <div
+                                    class="rounded-2xl overflow-hidden border border-[#23334d] bg-[#0c1322] shadow-xl group"
+                                >
+                                    <img
+                                        alt="LivesFlow CRM Platform Interface"
+                                        class="w-full h-auto object-cover object-left-top transition-transform duration-500 group-hover:scale-102"
+                                        src="./images/Project1.png"
+                                    />
+                                </div>
+                            </div>
+                            <!-- Right: Content & KPIs -->
+                            <div
+                                class="lg:col-span-6 order-1 lg:order-2 space-y-5"
+                            >
+                                <div>
+                                    <p
+                                        class="text-xs font-extrabold tracking-widest text-cyan-400 uppercase mb-1"
+                                    >
+                                        LARAVEL &amp; VERCEL
+                                    </p>
+                                    <h3
+                                        class="text-3xl sm:text-4xl font-black text-white tracking-tight"
+                                    >
+                                        LivesFlow
+                                    </h3>
+                                </div>
+                                <div
+                                    class="dark-sub-card rounded-2xl p-6 border border-[#213049] text-slate-300 text-sm leading-relaxed"
+                                >
+                                    Designed and built an all-in-one CRM
+                                    platform for financial advisors. Track
+                                    prospects through every pipeline stage,
+                                    schedule meetings, monitor team performance,
+                                    and close more sales—all in one place.
+                                </div>
+                                <!-- Metrics Grid -->
+                                <div class="grid grid-cols-3 gap-3 pt-2">
+                                    <div>
+                                        <div
+                                            class="text-2xl sm:text-3xl font-extrabold text-cyan-400 tracking-tight"
+                                        >
+                                            +42%
+                                        </div>
+                                        <div
+                                            class="text-[11px] sm:text-xs text-slate-400 mt-1 font-medium"
+                                        >
+                                            Workflow Velocity
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            class="text-2xl sm:text-3xl font-extrabold text-cyan-400 tracking-tight"
+                                        >
+                                            1k+
+                                        </div>
+                                        <div
+                                            class="text-[11px] sm:text-xs text-slate-400 mt-1 font-medium"
+                                        >
+                                            Active Advisers
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            class="text-2xl sm:text-3xl font-extrabold text-cyan-400 tracking-tight"
+                                        >
+                                            99.9%
+                                        </div>
+                                        <div
+                                            class="text-[11px] sm:text-xs text-slate-400 mt-1 font-medium"
+                                        >
+                                            Crash-Free SLA
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Button Link -->
+                                <div class="pt-4">
+                                    <a
+                                        class="inline-flex items-center space-x-2 bg-white text-slate-900 font-extrabold text-xs px-6 py-3 rounded-full uppercase tracking-wider hover:bg-slate-200 transition shadow-md"
+                                        href="https://livesflow.com/" target="_blank"
+                                    >
+                                        <span>LIVE PLATFORM</span>
+                                        <span class="text-sm font-bold">↗</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Project 2: Guidance Counseling System -->
+                    <article
+                        class="dark-main-card rounded-3xl p-6 sm:p-10 border border-[#1b263b] shadow-2xl"
+                    >
+                        <div
+                            class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center"
+                        >
+                            <!-- Left: Content & KPIs -->
+                            <div class="lg:col-span-6 space-y-5">
+                                <div>
+                                    <p
+                                        class="text-xs font-extrabold tracking-widest text-cyan-400 uppercase mb-1"
+                                    >
+                                        GUIDANCE SYSTEM &amp; LOGIN
+                                    </p>
+                                    <h3
+                                        class="text-3xl sm:text-4xl font-black text-white tracking-tight"
+                                    >
+                                        Guidance Counseling System
+                                    </h3>
+                                </div>
+                                <div
+                                    class="dark-sub-card rounded-2xl p-6 border border-[#213049] text-slate-300 text-sm leading-relaxed"
+                                >
+                                    Created a Guidance Counseling and Record
+                                    Tracking system for St. Paul University
+                                    Philippines. This tracks all records of
+                                    individual upcoming and enrolled students in
+                                    the university.
+                                </div>
+                                <!-- Metrics Grid -->
+                                <div class="grid grid-cols-3 gap-3 pt-2">
+                                    <div>
+                                        <div
+                                            class="text-2xl sm:text-3xl font-extrabold text-cyan-400 tracking-tight"
+                                        >
+                                            8k+
+                                        </div>
+                                        <div
+                                            class="text-[11px] sm:text-xs text-slate-400 mt-1 font-medium"
+                                        >
+                                            Student Records
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            class="text-2xl sm:text-3xl font-extrabold text-cyan-400 tracking-tight"
+                                        >
+                                            12
+                                        </div>
+                                        <div
+                                            class="text-[11px] sm:text-xs text-slate-400 mt-1 font-medium"
+                                        >
+                                            Guidance Teams
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            class="text-2xl sm:text-3xl font-extrabold text-cyan-400 tracking-tight"
+                                        >
+                                            99.99%
+                                        </div>
+                                        <div
+                                            class="text-[11px] sm:text-xs text-slate-400 mt-1 font-medium"
+                                        >
+                                            Reliability Rating
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Button Link -->
+                                <div class="pt-4">
+                                    <a
+                                        class="inline-flex items-center space-x-2 bg-white text-slate-900 font-extrabold text-xs px-6 py-3 rounded-full uppercase tracking-wider hover:bg-slate-200 transition shadow-md"
+                                        href="https://guidance-counseling.spup-ict.com/" target="_blank"
+                                    >
+                                        <span>LIVE PLATFORM</span>
+                                        <span class="text-sm font-bold">↗</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Right: Mockup preview card -->
+                            <div class="lg:col-span-6">
+                                <div
+                                    class="rounded-2xl overflow-hidden border border-[#23334d] bg-[#0c1322] shadow-xl group"
+                                >
+                                    <img
+                                        alt="Guidance Counseling System Portal Dashboard"
+                                        class="w-full h-auto object-cover object-right-bottom transition-transform duration-500 group-hover:scale-102"
+                                        src="./images/Guidance.png"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            <!-- END: MyProjectsSection -->
+            <!-- ========================================== -->
+            <!-- SECTION 3: TOOLS & TECH STACK              -->
+            <!-- ========================================== -->
+            <!-- BEGIN: ToolsSection -->
+            <section class="pt-4 flex flex-col items-center" id="tools">
+                <!-- Section Badge -->
+                <div class="mb-12">
+                    <span
+                        class="glow-section-badge px-10 py-3 rounded-full text-cyan-400 font-extrabold tracking-widest text-base uppercase"
+                    >
+                        TOOLS
+                    </span>
+                </div>
+                <!-- Tools Mega Container -->
+                <div
+                    class="w-full dark-main-card rounded-3xl p-6 sm:p-10 border border-[#1b263b] shadow-2xl"
+                >
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                        <!-- Category 1: Front-End -->
+                        <div
+                            class="bg-[#101726] border border-[#1d293d] rounded-2xl p-6 flex flex-col items-center"
+                        >
+                            <h4
+                                class="text-lg font-bold text-white mb-6 tracking-wide"
+                            >
+                                Front-End
+                            </h4>
+                            <div class="grid grid-cols-2 gap-4 w-full">
+                                <!-- HTML5 -->
+                                <div
+                                    class="tool-tile rounded-xl p-4 flex flex-col items-center justify-center aspect-square text-center"
+                                >
+                                    <i
+                                        class="fa-brands fa-html5 text-3xl text-orange-500 mb-2.5"
+                                    ></i>
+                                    <span
+                                        class="text-xs font-semibold text-slate-200"
+                                        >HTML5</span
+                                    >
+                                </div>
+                                <!-- CSS3 -->
+                                <div
+                                    class="tool-tile rounded-xl p-4 flex flex-col items-center justify-center aspect-square text-center"
+                                >
+                                    <i
+                                        class="fa-brands fa-css3-alt text-3xl text-blue-500 mb-2.5"
+                                    ></i>
+                                    <span
+                                        class="text-xs font-semibold text-slate-200"
+                                        >CSS3</span
+                                    >
+                                </div>
+                                <!-- Bootstrap -->
+                                <div
+                                    class="tool-tile rounded-xl p-4 flex flex-col items-center justify-center aspect-square text-center"
+                                >
+                                    <i
+                                        class="fa-brands fa-bootstrap text-3xl text-purple-400 mb-2.5"
+                                    ></i>
+                                    <span
+                                        class="text-xs font-semibold text-slate-200"
+                                        >Bootstrap</span
+                                    >
+                                </div>
+                                <!-- JavaScript -->
+                                <div
+                                    class="tool-tile rounded-xl p-4 flex flex-col items-center justify-center aspect-square text-center"
+                                >
+                                    <i
+                                        class="fa-brands fa-square-js text-3xl text-yellow-400 mb-2.5"
+                                    ></i>
+                                    <span
+                                        class="text-xs font-semibold text-slate-200"
+                                        >JavaScript</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Category 2: Back-End -->
+                        <div
+                            class="bg-[#101726] border border-[#1d293d] rounded-2xl p-6 flex flex-col items-center"
+                        >
+                            <h4
+                                class="text-lg font-bold text-white mb-6 tracking-wide"
+                            >
+                                Back-End
+                            </h4>
+                            <div class="grid grid-cols-2 gap-4 w-full">
+                                <!-- Docker -->
+                                <div
+                                    class="tool-tile rounded-xl p-4 flex flex-col items-center justify-center aspect-square text-center"
+                                >
+                                    <i
+                                        class="fa-brands fa-docker text-3xl text-blue-400 mb-2.5"
+                                    ></i>
+                                    <span
+                                        class="text-xs font-semibold text-slate-200"
+                                        >Docker</span
+                                    >
+                                </div>
+                                <!-- Laravel -->
+                                <div
+                                    class="tool-tile rounded-xl p-4 flex flex-col items-center justify-center aspect-square text-center"
+                                >
+                                    <i
+                                        class="fa-brands fa-laravel text-3xl text-red-500 mb-2.5"
+                                    ></i>
+                                    <span
+                                        class="text-xs font-semibold text-slate-200"
+                                        >Laravel</span
+                                    >
+                                </div>
+                                <!-- React -->
+                                <div
+                                    class="tool-tile rounded-xl p-4 flex flex-col items-center justify-center aspect-square text-center"
+                                >
+                                    <i
+                                        class="fa-brands fa-react text-3xl text-cyan-400 mb-2.5"
+                                    ></i>
+                                    <span
+                                        class="text-xs font-semibold text-slate-200"
+                                        >React</span
+                                    >
+                                </div>
+                                <!-- Node.js -->
+                                <div
+                                    class="tool-tile rounded-xl p-4 flex flex-col items-center justify-center aspect-square text-center"
+                                >
+                                    <i
+                                        class="fa-brands fa-node-js text-3xl text-green-500 mb-2.5"
+                                    ></i>
+                                    <span
+                                        class="text-xs font-semibold text-slate-200"
+                                        >Node.js</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Category 3: Other Tools -->
+                        <div
+                            class="bg-[#101726] border border-[#1d293d] rounded-2xl p-6 flex flex-col items-center"
+                        >
+                            <h4
+                                class="text-lg font-bold text-white mb-6 tracking-wide"
+                            >
+                                Other Tools
+                            </h4>
+                            <div class="grid grid-cols-2 gap-4 w-full">
+                                <!-- Heroku -->
+                                <div
+                                    class="tool-tile rounded-xl p-4 flex flex-col items-center justify-center aspect-square text-center"
+                                >
+                                    <i
+                                        class="fa-solid fa-cloud text-3xl text-purple-300 mb-2.5"
+                                    ></i>
+                                    <span
+                                        class="text-xs font-semibold text-slate-200"
+                                        >Heroku</span
+                                    >
+                                </div>
+                                <!-- Git -->
+                                <div
+                                    class="tool-tile rounded-xl p-4 flex flex-col items-center justify-center aspect-square text-center"
+                                >
+                                    <i
+                                        class="fa-brands fa-git-alt text-3xl text-orange-600 mb-2.5"
+                                    ></i>
+                                    <span
+                                        class="text-xs font-semibold text-slate-200"
+                                        >Git</span
+                                    >
+                                </div>
+                                <!-- Postman -->
+                                <div
+                                    class="tool-tile rounded-xl p-4 flex flex-col items-center justify-center aspect-square text-center"
+                                >
+                                    <i
+                                        class="fa-solid fa-paper-plane text-3xl text-orange-400 mb-2.5"
+                                    ></i>
+                                    <span
+                                        class="text-xs font-semibold text-slate-200"
+                                        >Postman</span
+                                    >
+                                </div>
+                                <!-- Github -->
+                                <div
+                                    class="tool-tile rounded-xl p-4 flex flex-col items-center justify-center aspect-square text-center"
+                                >
+                                    <i
+                                        class="fa-brands fa-github text-3xl text-white mb-2.5"
+                                    ></i>
+                                    <span
+                                        class="text-xs font-semibold text-slate-200"
+                                        >Github</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END: ToolsSection -->
+            <!-- ========================================== -->
+            <!-- SECTION 4: UPCOMING & COURSE PROJECTS      -->
+            <!-- ========================================== -->
+            <!-- BEGIN: UpcomingProjectsSection -->
+            <section class="pt-4 flex flex-col items-center">
+                <!-- Outer Card Enclosure -->
+                <div
+                    class="w-full dark-main-card rounded-3xl p-6 sm:p-10 border border-[#1b263b] shadow-2xl"
+                >
+                    <!-- Section Header Title -->
+                    <h3
+                        class="text-xl sm:text-2xl font-bold text-white text-center mb-8 tracking-wide"
+                    >
+                        Upcoming &amp; Course Projects
+                    </h3>
+                    <!-- 6 Cards Grid (2x3) -->
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    >
+                        <!-- Repeatable Upcoming Project Card (1 to 6) -->
+                        <!-- Card 1 -->
+                        <div
+                            class="bg-[#121927] border border-[#1d293d] rounded-2xl overflow-hidden p-5 flex flex-col justify-between space-y-4"
+                        >
+                            <!-- Graphical Banner Top -->
+                            <div
+                                class="relative w-full h-32 bg-white rounded-xl flex items-center justify-center overflow-hidden shadow-inner"
+                            >
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-slate-100 to-white"
+                                ></div>
+                                <!-- Festive decorative ribbons & confettis -->
+                                <div
+                                    class="absolute w-2 h-2 bg-red-500 rounded-sm rotate-45 top-3 left-6"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-4 bg-blue-500 rotate-12 bottom-3 left-10"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-2 bg-slate-800 rounded-full top-4 right-10"
+                                ></div>
+                                <div
+                                    class="absolute w-3 h-2 bg-red-500 rotate-45 bottom-4 right-6"
+                                ></div>
+                                <!-- Central Badge -->
+                                <div
+                                    class="relative bg-slate-900 text-white font-black text-xs px-5 py-2 rounded-md shadow-lg tracking-wider transform -rotate-1 border border-cyan-400/40"
+                                >
+                                    AVAILABLE SOON
+                                </div>
+                            </div>
+                            <!-- Card Details -->
+                            <div class="space-y-2">
+                                <span
+                                    class="text-[10px] font-extrabold tracking-widest text-cyan-400 uppercase"
+                                    >SECRET</span
+                                >
+                                <h5
+                                    class="text-sm font-extrabold text-white uppercase tracking-tight"
+                                >
+                                    BAHALA NA KUNG ANO MAISIP
+                                </h5>
+                                <p
+                                    class="text-xs text-slate-400 leading-relaxed"
+                                >
+                                    Developer currently organizing his files,
+                                    content will be available soon. Thank you
+                                    for your patience.
+                                </p>
+                            </div>
+                            <div>
+                                <span
+                                    class="inline-block bg-[#162134] text-slate-400 border border-[#23334d] px-4 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase"
+                                >
+                                    COMING SOON
+                                </span>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div
+                            class="bg-[#121927] border border-[#1d293d] rounded-2xl overflow-hidden p-5 flex flex-col justify-between space-y-4"
+                        >
+                            <div
+                                class="relative w-full h-32 bg-white rounded-xl flex items-center justify-center overflow-hidden shadow-inner"
+                            >
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-slate-100 to-white"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-2 bg-red-500 rounded-sm rotate-45 top-3 left-6"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-4 bg-blue-500 rotate-12 bottom-3 left-10"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-2 bg-slate-800 rounded-full top-4 right-10"
+                                ></div>
+                                <div
+                                    class="relative bg-slate-900 text-white font-black text-xs px-5 py-2 rounded-md shadow-lg tracking-wider transform -rotate-1 border border-cyan-400/40"
+                                >
+                                    AVAILABLE SOON
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <span
+                                    class="text-[10px] font-extrabold tracking-widest text-cyan-400 uppercase"
+                                    >SECRET</span
+                                >
+                                <h5
+                                    class="text-sm font-extrabold text-white uppercase tracking-tight"
+                                >
+                                    BAHALA NA KUNG ANO MAISIP
+                                </h5>
+                                <p
+                                    class="text-xs text-slate-400 leading-relaxed"
+                                >
+                                    Developer currently organizing his files,
+                                    content will be available soon. Thank you
+                                    for your patience.
+                                </p>
+                            </div>
+                            <div>
+                                <span
+                                    class="inline-block bg-[#162134] text-slate-400 border border-[#23334d] px-4 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase"
+                                >
+                                    COMING SOON
+                                </span>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div
+                            class="bg-[#121927] border border-[#1d293d] rounded-2xl overflow-hidden p-5 flex flex-col justify-between space-y-4"
+                        >
+                            <div
+                                class="relative w-full h-32 bg-white rounded-xl flex items-center justify-center overflow-hidden shadow-inner"
+                            >
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-slate-100 to-white"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-2 bg-red-500 rounded-sm rotate-45 top-3 left-6"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-4 bg-blue-500 rotate-12 bottom-3 left-10"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-2 bg-slate-800 rounded-full top-4 right-10"
+                                ></div>
+                                <div
+                                    class="relative bg-slate-900 text-white font-black text-xs px-5 py-2 rounded-md shadow-lg tracking-wider transform -rotate-1 border border-cyan-400/40"
+                                >
+                                    AVAILABLE SOON
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <span
+                                    class="text-[10px] font-extrabold tracking-widest text-cyan-400 uppercase"
+                                    >SECRET</span
+                                >
+                                <h5
+                                    class="text-sm font-extrabold text-white uppercase tracking-tight"
+                                >
+                                    BAHALA NA KUNG ANO MAISIP
+                                </h5>
+                                <p
+                                    class="text-xs text-slate-400 leading-relaxed"
+                                >
+                                    Developer currently organizing his files,
+                                    content will be available soon. Thank you
+                                    for your patience.
+                                </p>
+                            </div>
+                            <div>
+                                <span
+                                    class="inline-block bg-[#162134] text-slate-400 border border-[#23334d] px-4 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase"
+                                >
+                                    COMING SOON
+                                </span>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div
+                            class="bg-[#121927] border border-[#1d293d] rounded-2xl overflow-hidden p-5 flex flex-col justify-between space-y-4"
+                        >
+                            <div
+                                class="relative w-full h-32 bg-white rounded-xl flex items-center justify-center overflow-hidden shadow-inner"
+                            >
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-slate-100 to-white"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-2 bg-red-500 rounded-sm rotate-45 top-3 left-6"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-4 bg-blue-500 rotate-12 bottom-3 left-10"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-2 bg-slate-800 rounded-full top-4 right-10"
+                                ></div>
+                                <div
+                                    class="relative bg-slate-900 text-white font-black text-xs px-5 py-2 rounded-md shadow-lg tracking-wider transform -rotate-1 border border-cyan-400/40"
+                                >
+                                    AVAILABLE SOON
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <span
+                                    class="text-[10px] font-extrabold tracking-widest text-cyan-400 uppercase"
+                                    >SECRET</span
+                                >
+                                <h5
+                                    class="text-sm font-extrabold text-white uppercase tracking-tight"
+                                >
+                                    BAHALA NA KUNG ANO MAISIP
+                                </h5>
+                                <p
+                                    class="text-xs text-slate-400 leading-relaxed"
+                                >
+                                    Developer currently organizing his files,
+                                    content will be available soon. Thank you
+                                    for your patience.
+                                </p>
+                            </div>
+                            <div>
+                                <span
+                                    class="inline-block bg-[#162134] text-slate-400 border border-[#23334d] px-4 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase"
+                                >
+                                    COMING SOON
+                                </span>
+                            </div>
+                        </div>
+                        <!-- Card 5 -->
+                        <div
+                            class="bg-[#121927] border border-[#1d293d] rounded-2xl overflow-hidden p-5 flex flex-col justify-between space-y-4"
+                        >
+                            <div
+                                class="relative w-full h-32 bg-white rounded-xl flex items-center justify-center overflow-hidden shadow-inner"
+                            >
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-slate-100 to-white"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-2 bg-red-500 rounded-sm rotate-45 top-3 left-6"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-4 bg-blue-500 rotate-12 bottom-3 left-10"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-2 bg-slate-800 rounded-full top-4 right-10"
+                                ></div>
+                                <div
+                                    class="relative bg-slate-900 text-white font-black text-xs px-5 py-2 rounded-md shadow-lg tracking-wider transform -rotate-1 border border-cyan-400/40"
+                                >
+                                    AVAILABLE SOON
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <span
+                                    class="text-[10px] font-extrabold tracking-widest text-cyan-400 uppercase"
+                                    >SECRET</span
+                                >
+                                <h5
+                                    class="text-sm font-extrabold text-white uppercase tracking-tight"
+                                >
+                                    BAHALA NA KUNG ANO MAISIP
+                                </h5>
+                                <p
+                                    class="text-xs text-slate-400 leading-relaxed"
+                                >
+                                    Developer currently organizing his files,
+                                    content will be available soon. Thank you
+                                    for your patience.
+                                </p>
+                            </div>
+                            <div>
+                                <span
+                                    class="inline-block bg-[#162134] text-slate-400 border border-[#23334d] px-4 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase"
+                                >
+                                    COMING SOON
+                                </span>
+                            </div>
+                        </div>
+                        <!-- Card 6 -->
+                        <div
+                            class="bg-[#121927] border border-[#1d293d] rounded-2xl overflow-hidden p-5 flex flex-col justify-between space-y-4"
+                        >
+                            <div
+                                class="relative w-full h-32 bg-white rounded-xl flex items-center justify-center overflow-hidden shadow-inner"
+                            >
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-slate-100 to-white"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-2 bg-red-500 rounded-sm rotate-45 top-3 left-6"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-4 bg-blue-500 rotate-12 bottom-3 left-10"
+                                ></div>
+                                <div
+                                    class="absolute w-2 h-2 bg-slate-800 rounded-full top-4 right-10"
+                                ></div>
+                                <div
+                                    class="relative bg-slate-900 text-white font-black text-xs px-5 py-2 rounded-md shadow-lg tracking-wider transform -rotate-1 border border-cyan-400/40"
+                                >
+                                    AVAILABLE SOON
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <span
+                                    class="text-[10px] font-extrabold tracking-widest text-cyan-400 uppercase"
+                                    >SECRET</span
+                                >
+                                <h5
+                                    class="text-sm font-extrabold text-white uppercase tracking-tight"
+                                >
+                                    BAHALA NA KUNG ANO MAISIP
+                                </h5>
+                                <p
+                                    class="text-xs text-slate-400 leading-relaxed"
+                                >
+                                    Developer currently organizing his files,
+                                    content will be available soon. Thank you
+                                    for your patience.
+                                </p>
+                            </div>
+                            <div>
+                                <span
+                                    class="inline-block bg-[#162134] text-slate-400 border border-[#23334d] px-4 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase"
+                                >
+                                    COMING SOON
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END: UpcomingProjectsSection -->
+            <!-- ========================================== -->
+            <!-- SECTION 5: CONTACT ME                      -->
+            <!-- ========================================== -->
+            <!-- BEGIN: ContactMeSection -->
+            <section class="pt-4 flex flex-col items-center" id="contact">
+                <!-- Section Badge -->
+                <div class="mb-12">
+                    <span
+                        class="glow-section-badge px-10 py-3 rounded-full text-cyan-400 font-extrabold tracking-widest text-base uppercase"
+                    >
+                        CONTACT ME
+                    </span>
+                </div>
+                <!-- Main Contact Card -->
+                <div
+                    class="w-full dark-main-card rounded-3xl p-6 sm:p-10 border border-[#1b263b] shadow-2xl"
+                >
+                    <div
+                        class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10"
+                    >
+                        <!-- Left Column: Bio & Direct Channels -->
+                        <div
+                            class="lg:col-span-4 bg-[#101726] border border-[#1c283c] rounded-2xl p-7 flex flex-col items-center text-center justify-between"
+                        >
+                            <div class="flex flex-col items-center space-y-4">
+                                <!-- Avatar Circle with cyan outline glow -->
+                                <div
+                                    class="w-28 h-28 rounded-full overflow-hidden p-1 border-2 border-cyan-400 shadow-neon-cyan relative"
+                                >
+                                    <img
+                                        alt="Jan Laurence Olarte Avatar"
+                                        class="w-full h-full object-cover rounded-full"
+                                        src="./images/mainprofile.jpg"
+                                    />
+                                </div>
+                                <!-- Name & Pitch -->
+                                <div>
+                                    <h4 class="text-xl font-bold text-white">
+                                        Jan Laurence Olarte
+                                    </h4>
+                                    <p
+                                        class="text-xs text-slate-400 mt-3 leading-relaxed"
+                                    >
+                                        Open to work with website development,
+                                        mobile app development, and freelancing.
+                                        I can also give tutorials,
+                                        demonstrations, and consultations
+                                        regarding tech stacks and skills. Just
+                                        reach out!
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Direct Channels Header & Social Buttons -->
+                            <div class="w-full pt-8">
+                                <div class="border-t border-[#1d2a3f] pt-5">
+                                    <p
+                                        class="text-[11px] font-extrabold tracking-widest text-slate-400 uppercase mb-4"
+                                    >
+                                        DIRECT CHANNELS
+                                    </p>
+                                    <div
+                                        class="flex items-center justify-center space-x-3"
+                                    >
+                                        <!-- LinkedIn -->
+                                        <a
+                                            class="w-9 h-9 rounded-full bg-[#182337] border border-[#273752] flex items-center justify-center text-slate-200 hover:text-cyan-400 hover:border-cyan-400 transition"
+                                            href="https://linkedin.com"
+                                            rel="noopener noreferrer"
+                                            target="_blank"
+                                            title="LinkedIn"
+                                        >
+                                            <i
+                                                class="fa-brands fa-linkedin-in text-sm"
+                                            ></i>
+                                        </a>
+                                        <!-- GitHub -->
+                                        <a
+                                            class="w-9 h-9 rounded-full bg-[#182337] border border-[#273752] flex items-center justify-center text-slate-200 hover:text-cyan-400 hover:border-cyan-400 transition"
+                                            href="https://github.com"
+                                            rel="noopener noreferrer"
+                                            target="_blank"
+                                            title="GitHub"
+                                        >
+                                            <i
+                                                class="fa-brands fa-github text-sm"
+                                            ></i>
+                                        </a>
+                                        <!-- Facebook -->
+                                        <a
+                                            class="w-9 h-9 rounded-full bg-[#182337] border border-[#273752] flex items-center justify-center text-slate-200 hover:text-cyan-400 hover:border-cyan-400 transition"
+                                            href="https://facebook.com"
+                                            rel="noopener noreferrer"
+                                            target="_blank"
+                                            title="Facebook"
+                                        >
+                                            <i
+                                                class="fa-brands fa-facebook-f text-sm"
+                                            ></i>
+                                        </a>
+                                        <!-- Email -->
+                                        <a
+                                            class="w-9 h-9 rounded-full bg-[#182337] border border-[#273752] flex items-center justify-center text-slate-200 hover:text-cyan-400 hover:border-cyan-400 transition"
+                                            href="janlaurenceolarte070101@gmail.com"
+                                            title="Email"
+                                        >
+                                            <i
+                                                class="fa-solid fa-envelope text-sm"
+                                            ></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Column: Interactive Contact Form -->
+                        <div class="lg:col-span-8 space-y-6">
+                            <form
+                                class="space-y-5"
+                                data-purpose="contact-form"
+                                onsubmit="event.preventDefault()"
+                            >
+                                <!-- Name Input -->
+                                <div>
+                                    <label
+                                        class="block text-xs font-extrabold text-slate-300 uppercase tracking-wider mb-2"
+                                        >NAME</label
+                                    >
+                                    <input
+                                        class="w-full bg-[#131d2e] border border-[#22314a] rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition"
+                                        placeholder="e.g. John Doe"
+                                        type="text"
+                                    />
+                                </div>
+                                <!-- Details / Email Input -->
+                                <div>
+                                    <label
+                                        class="block text-xs font-extrabold text-slate-300 uppercase tracking-wider mb-2"
+                                        >DETAILS / EMAIL</label
+                                    >
+                                    <input
+                                        class="w-full bg-[#131d2e] border border-[#22314a] rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition"
+                                        placeholder="e.g. johndoe@sample.com"
+                                        type="email"
+                                    />
+                                </div>
+                                <!-- Message Textarea -->
+                                <div>
+                                    <label
+                                        class="block text-xs font-extrabold text-slate-300 uppercase tracking-wider mb-2"
+                                        >MESSAGE</label
+                                    >
+                                    <textarea
+                                        class="w-full bg-[#131d2e] border border-[#22314a] rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition resize-y"
+                                        placeholder="Message me here anytime, and anywhere"
+                                        rows="4"
+                                    ></textarea>
+                                </div>
+                                <!-- Submit Button & Response Indicator -->
+                                <div
+                                    class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1"
+                                >
+                                    <button
+                                        class="bg-white text-slate-900 font-extrabold text-xs px-8 py-3 rounded-full uppercase tracking-wider hover:bg-slate-200 transition shadow-md self-start"
+                                        type="submit"
+                                    >
+                                        SEND MESSAGE
+                                    </button>
+                                    <span
+                                        class="text-xs text-slate-500 font-medium"
+                                    >
+                                        Typical response: &lt; 24h
+                                    </span>
+                                </div>
+                            </form>
+                            <!-- Or Reach Out Directly Divider -->
+                            <div
+                                class="relative py-2 flex items-center justify-center"
+                            >
+                                <div
+                                    class="border-t border-[#1d2a3f] w-full"
+                                ></div>
+                                <span
+                                    class="bg-[#0f1624] px-4 text-[10px] font-extrabold tracking-widest text-slate-500 uppercase absolute"
+                                >
+                                    OR REACH OUT DIRECTLY
+                                </span>
+                            </div>
+                            <!-- Email Direct Copy Bar -->
+                            <div
+                                class="bg-[#121c2c] border border-[#1f2e46] rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-4"
+                            >
+                                <div
+                                    class="font-mono text-xs sm:text-sm text-slate-300 truncate"
+                                >
+                                    <span class="font-bold text-slate-400"
+                                        >EMAIL:</span
+                                    >
+                                    <span
+                                        class="ml-1 text-slate-200"
+                                        id="targetEmail"
+                                        >janlaurenceolarte070101@gmail.com</span
+                                    >
+                                </div>
+                                <button
+                                    class="bg-[#1b263a] hover:bg-[#23324d] text-slate-200 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-lg border border-[#2b3c58] transition active:scale-95 shrink-0"
+                                    id="copyEmailBtn"
+                                    onclick="
+                                        copyToClipboard(
+                                            'janlaurenceolarte070101@gmail.com',
+                                        )
+                                    "
+                                >
+                                    COPY ADDRESS
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END: ContactMeSection -->
+        </main>
+        <!-- END: MainContent -->
+        <!-- ========================================== -->
+        <!-- FOOTER & BACK TO TOP                       -->
+        <!-- ========================================== -->
+        <!-- BEGIN: MainFooter -->
+        <footer
+            class="w-full bg-[#05080e] border-t border-[#121b2b] py-8 px-6 relative"
+        >
+            <div
+                class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 text-center lg:text-left"
+            >
+                <!-- Brand & Year -->
+                <div class="flex items-center space-x-3.5">
+                    <div
+                        class="w-10 h-10 rounded-full bg-[#0d1626] border border-cyan-500/40 flex items-center justify-center font-bold text-cyan-400 text-xs tracking-wider shadow-inner"
+                    >
+                        JLO
+                    </div>
+                    <div>
+                        <h5
+                            class="text-sm font-black text-white tracking-wider uppercase"
+                        >
+                            OLARTE
+                        </h5>
+                        <p
+                            class="text-[10px] font-semibold text-slate-500 tracking-widest uppercase"
+                        >
+                            EST. 2022
+                        </p>
+                    </div>
+                </div>
+                <!-- Center Philosophy & Copyright -->
+                <div class="space-y-1 text-center">
+                    <p class="text-xs text-slate-300 font-medium">
+                        Success in web development isn't about writing perfect
+                        code—it's about solving real problems.
+                    </p>
+                    <p class="text-[11px] font-mono text-slate-500">
+                        © 2026 Jan Laurence Olarte. All rights reserved.
+                    </p>
+                </div>
+                <!-- Footer Navigation Links -->
+                <nav
+                    class="flex items-center space-x-3 text-xs font-bold tracking-widest text-slate-400 uppercase"
+                >
+                    <a
+                        class="hover:text-cyan-400 transition-colors"
+                        href="#about"
+                        >HOME</a
+                    >
+                    <span class="text-slate-600">•</span>
+                    <a
+                        class="hover:text-cyan-400 transition-colors"
+                        href="#projects"
+                        >PROJECTS</a
+                    >
+                    <span class="text-slate-600">•</span>
+                    <a
+                        class="hover:text-cyan-400 transition-colors"
+                        href="#tools"
+                        >TOOLS</a
+                    >
+                    <span class="text-slate-600">•</span>
+                    <a
+                        class="hover:text-cyan-400 transition-colors"
+                        href="#contact"
+                        >CONTACT</a
+                    >
+                </nav>
+            </div>
+        </footer>
+        <!-- END: MainFooter -->
+        <!-- BEGIN: BackToTopFloatingButton -->
+        <!-- Floating Cyan Circular Up Button at bottom right matching reference screenshot -->
+        <a
+            aria-label="Back to top"
+            class="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 flex items-center justify-center text-lg font-black shadow-neon-cyan transition transform hover:-translate-y-1 z-50"
+            href="#"
+        >
+            ↑
+        </a>
+        <!-- END: BackToTopFloatingButton -->
+        <!-- BEGIN: InteractivityScript -->
+        <script data-purpose="clipboard-helper">
+            function copyToClipboard(text) {
+                navigator.clipboard
+                    .writeText(text)
+                    .then(() => {
+                        const btn = document.getElementById("copyEmailBtn");
+                        const originalText = btn.innerText;
+                        btn.innerText = "COPIED!";
+                        btn.classList.add("bg-cyan-500", "text-black");
+                        setTimeout(() => {
+                            btn.innerText = originalText;
+                            btn.classList.remove("bg-cyan-500", "text-black");
+                        }, 2000);
+                    })
+                    .catch((err) => {
+                        console.error("Failed to copy text: ", err);
+                    });
+            }
+        </script>
+        <!-- END: InteractivityScript -->
+    </body>
+</html>
